@@ -1,6 +1,6 @@
 export interface IGame{
-  id: number,
-  title:string,
-  year: number,
-  price: number
+  id?: number,
+  title?:string,
+  year?: number,
+  price?: number
 }
