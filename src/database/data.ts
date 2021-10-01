@@ -1,6 +1,7 @@
 import {IDatabase} from '../repositories/interfaces/InterfaceDataBase/IDatabaseRepository'
+import { IGame } from '../repositories/interfaces/InterfaceDataBase/IGameRepository'
 
-export const database:IDatabase = { 
+ const data:IDatabase = { 
   games:[
     {
       id:23,
@@ -21,4 +22,22 @@ export const database:IDatabase = {
       price: 20
     }
   ]
+}
+
+export class Database{
+
+  public static GetAll(): IDatabase{
+    return  data
+  }
+
+  public static GetOne(id:number): IGame | undefined{
+    return data.games.find(game => game.id == id)
+  }
+
+  public static DeleteOne(id:number){
+   const positionItem =  data.games.findIndex(game => game.id == id)
+   const itemDelet = data.games[positionItem]
+   data.games.splice(positionItem, 1)
+   return itemDelet
+  }
 }
